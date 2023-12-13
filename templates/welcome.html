@@ -1,0 +1,45 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--  <head>-->
+<!--    <title>提交数字串</title>-->
+<!--  </head>-->
+<!--  <body>-->
+<!--    {% if error %}-->
+<!--      <p style="color: red;">{{ error }}</p>-->
+<!--    {% endif %}-->
+
+<!--    <form method="POST" action="/">-->
+<!--      <label for="number">请输入数字串：</label>-->
+<!--      <input type="text" id="number" name="number" required>-->
+<!--      <br><br>-->
+<!--      <input type="submit" value="提交">-->
+<!--    </form>-->
+<!--  </body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="zh-ch">
+<head>
+    <title>提交数字串</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <form method="POST" action="/">
+        <div class="mb-3">
+            <label for="number" class="form-label">请输入数字串：</label>
+            <input type="text" class="form-control" id="number" name="number" required>
+        </div>
+        <button type="submit" class="btn btn-primary">提交</button>
+    </form>
+</div>
+
+<script src="/static/bootstrap.min.js"></script>
+</body>
+</html>
