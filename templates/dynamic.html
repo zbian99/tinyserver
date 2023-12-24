@@ -63,74 +63,53 @@
                     console.error(error);
                 });
             alert('提交成功！\n如果想更改排序请重新输入密码提交')
-            window.location.href = "http://39.108.132.67/";
+            window.location.href = "{{ url_for('index') }}";
         }
     </script>
+    <style>
+        .photo {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+    </style>
 </head>
-<!--<body>-->
-<!--<form onsubmit="event.preventDefault(); submitForm();">-->
-<!--    <label for="input1">{{message1}}</label>-->
-<!--    <input type="text" id="input1" name="input1" oninput="checkInputs()">-->
 
-<!--    <br>-->
 
-<!--    <label for="input2">{{message2}}</label>-->
-<!--    <input type="text" id="input2" name="input2" oninput="checkInputs()">-->
-
-<!--    <br>-->
-
-<!--    <label for="input3">{{message3}}</label>-->
-<!--    <input type="text" id="input3" name="input3" oninput="checkInputs()">-->
-
-<!--    <br>-->
-
-<!--    <label for="input4">{{message4}}</label>-->
-<!--    <input type="text" id="input4" name="input4" oninput="checkInputs()">-->
-
-<!--    <br>-->
-
-<!--    <label for="input5">{{message5}}</label>-->
-<!--    <input type="text" id="input5" name="input5" oninput="checkInputs()">-->
-
-<!--    <br>-->
-
-<!--    <input type="submit" value="Submit" id="submitBtn" disabled>-->
-<!--    <p id="errorMsg" style="color: red; display: none;">请用1-5的整数不重复的填写五个文本框</p>-->
-<!--</form>-->
-<!--</body>-->
 <body>
 <div class="container">
     <form onsubmit="event.preventDefault(); submitForm();">
         <div class="row mb-3">
-            <label for="input1" class="col-sm-2 col-form-label">{{message1}}</label>
+            <label for="input1" class="col-sm-2 col-form-label">第一位同学的排位：</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="input1" name="input1" oninput="checkInputs()">
             </div>
         </div>
 
         <div class="row mb-3">
-            <label for="input2" class="col-sm-2 col-form-label">{{message2}}</label>
+            <label for="input2" class="col-sm-2 col-form-label">第二位同学的排位：</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="input2" name="input2" oninput="checkInputs()">
             </div>
         </div>
 
         <div class="row mb-3">
-            <label for="input3" class="col-sm-2 col-form-label">{{message3}}</label>
+            <label for="input3" class="col-sm-2 col-form-label">第三位同学的排位：</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="input3" name="input3" oninput="checkInputs()">
             </div>
         </div>
 
         <div class="row mb-3">
-            <label for="input4" class="col-sm-2 col-form-label">{{message4}}</label>
+            <label for="input4" class="col-sm-2 col-form-label">第四位同学的排位：</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="input4" name="input4" oninput="checkInputs()">
             </div>
         </div>
 
         <div class="row mb-3">
-            <label for="input5" class="col-sm-2 col-form-label">{{message5}}</label>
+            <label for="input5" class="col-sm-2 col-form-label">第五位同学的排位：</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="input5" name="input5" oninput="checkInputs()">
             </div>
@@ -142,19 +121,239 @@
             </div>
         </div>
 
-<!--        <div class="row">-->
-<!--            <div class="col-sm-10 offset-sm-2">-->
-<!--                <p id="errorMsg" class="text-danger" style="display: none;">请用1-5的整数不重复填写五个文本框</p>-->
-<!--            </div>-->
-<!--        </div>-->
         <div class="alert alert-danger" id="errorMsg" role="alert" style="display: none;">
             <div class="col-sm-10 offset-sm-2">
-                <p >请用1-5的整数不重复填写五个文本框</p>
+                <p>请用1-5的整数不重复填写五个文本框</p>
             </div>
         </div>
 
     </form>
 </div>
 <script src="/static/bootstrap.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">第一组信息</h5>
+                    <p class="card-text">年龄: {{age1}}</p>
+                    <p class="card-text">年级: {{grade1}}</p>
+                    <p class="card-text">身份类别: {{cate1}}</p>
+                    <p class="card-text">身高: {{height1}}</p>
+                    <p class="card-text">体重: {{weight1}}</p>
+                    <p class="card-text">家乡: {{home1}}</p>
+                    <p class="card-text">规划发展地: {{workplace1}}</p>
+                    <p class="card-text">星座: {{constellation1}}</p>
+                    <p class="card-text">兴趣爱好: {{hobby1}}</p>
+                    <p class="card-text">自我介绍: {{intro1}}</p>
+                    <div class="d-flex">
+                        <img id="photo1" class="photo" src="photo1.jpg" alt="无照片">
+                    </div>
+                    <script>
+                        // 假设从后端获取的数据为photoData，是一个包含照片路径的数组
+                        var photoString = '{{photo_data1}}';
+                        var photoData = photoString.split(',');
+                        console.log(photoData)
+                        // var photoData = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo3.jpg'];
+
+                        // 获取包含照片的父元素
+                        var photoContainer = document.querySelector('.d-flex');
+
+                        // 清空父元素中的内容
+                        photoContainer.innerHTML = '';
+
+                        // 根据数据的长度动态生成对应数量的img标签
+                        for (var i = 0; i < photoData.length; i++) {
+                            var img = document.createElement('img');
+                            img.className = 'photo';
+                            img.src = photoData[i];
+                            img.alt = '照片' + (i + 1);
+                            photoContainer.appendChild(img);
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 添加其他组信息的卡片 -->
+    <div class="row">
+        <div class="col">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">第二组信息</h5>
+                    <p class="card-text">年龄: {{age2}}</p>
+                    <p class="card-text">年级: {{grade2}}</p>
+                    <p class="card-text">身份类别: {{cate2}}</p>
+                    <p class="card-text">身高: {{height2}}</p>
+                    <p class="card-text">体重: {{weight2}}</p>
+                    <p class="card-text">家乡: {{home2}}</p>
+                    <p class="card-text">规划发展地: {{workplace2}}</p>
+                    <p class="card-text">星座: {{constellation2}}</p>
+                    <p class="card-text">兴趣爱好: {{hobby2}}</p>
+                    <p class="card-text">自我介绍: {{intro2}}</p>
+                    <div class="d-flex">
+                        <img id="photo2" class="photo" src="photo1.jpg" alt="无照片">
+                    </div>
+                    <script>
+                        // 假设从后端获取的数据为photoData，是一个包含照片路径的数组
+                        var photoString = '{{photo_data2}}';
+                        var photoData = photoString.split(',');
+                        console.log(photoData)
+                        // var photoData = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo3.jpg'];
+
+                        // 获取包含照片的父元素
+                        var photoContainer = document.querySelector('.d-flex');
+
+                        // 清空父元素中的内容
+                        photoContainer.innerHTML = '';
+
+                        // 根据数据的长度动态生成对应数量的img标签
+                        for (var i = 0; i < photoData.length; i++) {
+                            var img = document.createElement('img');
+                            img.className = 'photo';
+                            img.src = photoData[i];
+                            img.alt = '照片' + (i + 1);
+                            photoContainer.appendChild(img);
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">第三组信息</h5>
+                    <p class="card-text">年龄: {{age3}}</p>
+                    <p class="card-text">年级: {{grade3}}</p>
+                    <p class="card-text">身份类别: {{cate3}}</p>
+                    <p class="card-text">身高: {{height3}}</p>
+                    <p class="card-text">体重: {{weight3}}</p>
+                    <p class="card-text">家乡: {{home3}}</p>
+                    <p class="card-text">规划发展地: {{workplace3}}</p>
+                    <p class="card-text">星座: {{constellation3}}</p>
+                    <p class="card-text">兴趣爱好: {{hobby3}}</p>
+                    <p class="card-text">自我介绍: {{intro3}}</p>
+                    <div class="d-flex">
+                        <img id="photo3" class="photo" src="photo1.jpg" alt="无照片">
+                    </div>
+                    <script>
+                        // 假设从后端获取的数据为photoData，是一个包含照片路径的数组
+                        var photoString = '{{photo_data3}}';
+                        var photoData = photoString.split(',');
+                        console.log(photoData)
+                        // var photoData = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo3.jpg'];
+
+                        // 获取包含照片的父元素
+                        var photoContainer = document.querySelector('.d-flex');
+
+                        // 清空父元素中的内容
+                        photoContainer.innerHTML = '';
+
+                        // 根据数据的长度动态生成对应数量的img标签
+                        for (var i = 0; i < photoData.length; i++) {
+                            var img = document.createElement('img');
+                            img.className = 'photo';
+                            img.src = photoData[i];
+                            img.alt = '照片' + (i + 1);
+                            photoContainer.appendChild(img);
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">第四组信息</h5>
+                    <p class="card-text">年龄: {{age4}}</p>
+                    <p class="card-text">年级: {{grade4}}</p>
+                    <p class="card-text">身份类别: {{cate4}}</p>
+                    <p class="card-text">身高: {{height4}}</p>
+                    <p class="card-text">体重: {{weight4}}</p>
+                    <p class="card-text">家乡: {{home4}}</p>
+                    <p class="card-text">规划发展地: {{workplace4}}</p>
+                    <p class="card-text">星座: {{constellation4}}</p>
+                    <p class="card-text">兴趣爱好: {{hobby4}}</p>
+                    <p class="card-text">自我介绍: {{intro4}}</p>
+                    <div class="d-flex">
+                        <img id="photo4" class="photo" src="photo1.jpg" alt="无照片">
+                    </div>
+                    <script>
+                        // 假设从后端获取的数据为photoData，是一个包含照片路径的数组
+                        var photoString = '{{photo_data4}}';
+                        var photoData = photoString.split(',');
+                        console.log(photoData)
+                        // var photoData = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo3.jpg'];
+
+                        // 获取包含照片的父元素
+                        var photoContainer = document.querySelector('.d-flex');
+
+                        // 清空父元素中的内容
+                        photoContainer.innerHTML = '';
+
+                        // 根据数据的长度动态生成对应数量的img标签
+                        for (var i = 0; i < photoData.length; i++) {
+                            var img = document.createElement('img');
+                            img.className = 'photo';
+                            img.src = photoData[i];
+                            img.alt = '照片' + (i + 1);
+                            photoContainer.appendChild(img);
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">第五组信息</h5>
+                    <p class="card-text">年龄: {{age5}}</p>
+                    <p class="card-text">年级: {{grade5}}</p>
+                    <p class="card-text">身份类别: {{cate5}}</p>
+                    <p class="card-text">身高: {{height5}}</p>
+                    <p class="card-text">体重: {{weight5}}</p>
+                    <p class="card-text">家乡: {{home5}}</p>
+                    <p class="card-text">规划发展地: {{workplace5}}</p>
+                    <p class="card-text">星座: {{constellation5}}</p>
+                    <p class="card-text">兴趣爱好: {{hobby5}}</p>
+                    <p class="card-text">自我介绍: {{intro5}}</p>
+                    <div class="d-flex">
+                        <img id="photo5" class="photo" src="photo1.jpg" alt="无照片">
+                    </div>
+                    <script>
+                        // 假设从后端获取的数据为photoData，是一个包含照片路径的数组
+                        var photoString = '{{photo_data5}}';
+                        var photoData = photoString.split(',');
+                        console.log(photoData)
+                        // var photoData = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo3.jpg'];
+
+                        // 获取包含照片的父元素
+                        var photoContainer = document.querySelector('.d-flex');
+
+                        // 清空父元素中的内容
+                        photoContainer.innerHTML = '';
+
+                        // 根据数据的长度动态生成对应数量的img标签
+                        for (var i = 0; i < photoData.length; i++) {
+                            var img = document.createElement('img');
+                            img.className = 'photo';
+                            img.src = photoData[i];
+                            img.alt = '照片' + (i + 1);
+                            photoContainer.appendChild(img);
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
