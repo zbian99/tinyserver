@@ -130,7 +130,6 @@
     </form>
 </div>
 <script src="/static/bootstrap.min.js"></script>
-
 <div class="container">
     <div class="row">
         <div class="col">
@@ -148,30 +147,11 @@
                     <p class="card-text">兴趣爱好: {{hobby1}}</p>
                     <p class="card-text">自我介绍: {{intro1}}</p>
                     <div class="d-flex">
-                        <img id="photo1" class="photo" src="photo1.jpg" alt="无照片">
+                        {% for photo_path in photo_data1 %}
+                        <img class="photo" src="{{ url_for('static', filename=photo_path) }}" alt="照片">
+                        {% endfor %}
                     </div>
-                    <script>
-                        // 假设从后端获取的数据为photoData，是一个包含照片路径的数组
-                        var photoString = '{{photo_data1}}';
-                        var photoData = photoString.split(',');
-                        console.log(photoData)
-                        // var photoData = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo3.jpg'];
 
-                        // 获取包含照片的父元素
-                        var photoContainer = document.querySelector('.d-flex');
-
-                        // 清空父元素中的内容
-                        photoContainer.innerHTML = '';
-
-                        // 根据数据的长度动态生成对应数量的img标签
-                        for (var i = 0; i < photoData.length; i++) {
-                            var img = document.createElement('img');
-                            img.className = 'photo';
-                            img.src = photoData[i];
-                            img.alt = '照片' + (i + 1);
-                            photoContainer.appendChild(img);
-                        }
-                    </script>
                 </div>
             </div>
         </div>
@@ -193,30 +173,10 @@
                     <p class="card-text">兴趣爱好: {{hobby2}}</p>
                     <p class="card-text">自我介绍: {{intro2}}</p>
                     <div class="d-flex">
-                        <img id="photo2" class="photo" src="photo1.jpg" alt="无照片">
+                        {% for photo_path in photo_data1 %}
+                        <img class="photo" src="{{ url_for('static', filename=photo_path) }}" alt="照片">
+                        {% endfor %}
                     </div>
-                    <script>
-                        // 假设从后端获取的数据为photoData，是一个包含照片路径的数组
-                        var photoString = '{{photo_data2}}';
-                        var photoData = photoString.split(',');
-                        console.log(photoData)
-                        // var photoData = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo3.jpg'];
-
-                        // 获取包含照片的父元素
-                        var photoContainer = document.querySelector('.d-flex');
-
-                        // 清空父元素中的内容
-                        photoContainer.innerHTML = '';
-
-                        // 根据数据的长度动态生成对应数量的img标签
-                        for (var i = 0; i < photoData.length; i++) {
-                            var img = document.createElement('img');
-                            img.className = 'photo';
-                            img.src = photoData[i];
-                            img.alt = '照片' + (i + 1);
-                            photoContainer.appendChild(img);
-                        }
-                    </script>
                 </div>
             </div>
         </div>
@@ -237,30 +197,10 @@
                     <p class="card-text">兴趣爱好: {{hobby3}}</p>
                     <p class="card-text">自我介绍: {{intro3}}</p>
                     <div class="d-flex">
-                        <img id="photo3" class="photo" src="photo1.jpg" alt="无照片">
+                        {% for photo_path in photo_data1 %}
+                        <img class="photo" src="{{ url_for('static', filename=photo_path) }}" alt="照片">
+                        {% endfor %}
                     </div>
-                    <script>
-                        // 假设从后端获取的数据为photoData，是一个包含照片路径的数组
-                        var photoString = '{{photo_data3}}';
-                        var photoData = photoString.split(',');
-                        console.log(photoData)
-                        // var photoData = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo3.jpg'];
-
-                        // 获取包含照片的父元素
-                        var photoContainer = document.querySelector('.d-flex');
-
-                        // 清空父元素中的内容
-                        photoContainer.innerHTML = '';
-
-                        // 根据数据的长度动态生成对应数量的img标签
-                        for (var i = 0; i < photoData.length; i++) {
-                            var img = document.createElement('img');
-                            img.className = 'photo';
-                            img.src = photoData[i];
-                            img.alt = '照片' + (i + 1);
-                            photoContainer.appendChild(img);
-                        }
-                    </script>
                 </div>
             </div>
         </div>
@@ -281,30 +221,10 @@
                     <p class="card-text">兴趣爱好: {{hobby4}}</p>
                     <p class="card-text">自我介绍: {{intro4}}</p>
                     <div class="d-flex">
-                        <img id="photo4" class="photo" src="photo1.jpg" alt="无照片">
+                        {% for photo_path in photo_data4 %}
+                        <img class="photo" src="{{ url_for('static', filename=photo_path) }}" alt="照片">
+                        {% endfor %}
                     </div>
-                    <script>
-                        // 假设从后端获取的数据为photoData，是一个包含照片路径的数组
-                        var photoString = '{{photo_data4}}';
-                        var photoData = photoString.split(',');
-                        console.log(photoData)
-                        // var photoData = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo3.jpg'];
-
-                        // 获取包含照片的父元素
-                        var photoContainer = document.querySelector('.d-flex');
-
-                        // 清空父元素中的内容
-                        photoContainer.innerHTML = '';
-
-                        // 根据数据的长度动态生成对应数量的img标签
-                        for (var i = 0; i < photoData.length; i++) {
-                            var img = document.createElement('img');
-                            img.className = 'photo';
-                            img.src = photoData[i];
-                            img.alt = '照片' + (i + 1);
-                            photoContainer.appendChild(img);
-                        }
-                    </script>
                 </div>
             </div>
         </div>
@@ -325,30 +245,10 @@
                     <p class="card-text">兴趣爱好: {{hobby5}}</p>
                     <p class="card-text">自我介绍: {{intro5}}</p>
                     <div class="d-flex">
-                        <img id="photo5" class="photo" src="photo1.jpg" alt="无照片">
+                        {% for photo_path in photo_data1 %}
+                        <img class="photo" src="{{ url_for('static', filename=photo_path) }}" alt="照片">
+                        {% endfor %}
                     </div>
-                    <script>
-                        // 假设从后端获取的数据为photoData，是一个包含照片路径的数组
-                        var photoString = '{{photo_data5}}';
-                        var photoData = photoString.split(',');
-                        console.log(photoData)
-                        // var photoData = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo3.jpg'];
-
-                        // 获取包含照片的父元素
-                        var photoContainer = document.querySelector('.d-flex');
-
-                        // 清空父元素中的内容
-                        photoContainer.innerHTML = '';
-
-                        // 根据数据的长度动态生成对应数量的img标签
-                        for (var i = 0; i < photoData.length; i++) {
-                            var img = document.createElement('img');
-                            img.className = 'photo';
-                            img.src = photoData[i];
-                            img.alt = '照片' + (i + 1);
-                            photoContainer.appendChild(img);
-                        }
-                    </script>
                 </div>
             </div>
         </div>

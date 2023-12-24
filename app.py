@@ -184,9 +184,11 @@ def index():
             message = val.split(',')
             # message = ["同学" + str(i) + "信息    排序：" for i in range(5)]
             result = []
+            photos = []
             for student_id in message:
                 person = get_person_info_by_student_number(student_id)
                 print(person)
+                photos.append(person[10].split(','))
                 result.append(person)
 
             return render_template('dynamic.html',
@@ -200,7 +202,7 @@ def index():
                                    constellation1=result[0][7],
                                    hobby1=result[0][8],
                                    intro1=result[0][9],
-                                   photo_data1=result[0][10],
+                                   photo_data1=photos[0],
                                    age2=result[1][0],
                                    grade2=result[1][1],
                                    cate2=result[1][2],
@@ -211,7 +213,7 @@ def index():
                                    constellation2=result[1][7],
                                    hobby2=result[1][8],
                                    intro2=result[1][9],
-                                   photo_data2=result[1][10],
+                                   photo_data2=photos[1],
                                    age3=result[2][0],
                                    grade3=result[2][1],
                                    cate3=result[2][2],
@@ -222,7 +224,7 @@ def index():
                                    constellation3=result[2][7],
                                    hobby3=result[2][8],
                                    intro3=result[2][9],
-                                   photo_data3=result[2][10],
+                                   photo_data3=photos[3],
                                    age4=result[3][0],
                                    grade4=result[3][1],
                                    cate4=result[3][2],
@@ -233,7 +235,7 @@ def index():
                                    constellation4=result[3][7],
                                    hobby4=result[3][8],
                                    intro4=result[3][9],
-                                   photo_data4=result[3][10],
+                                   photo_data4=photos[3],
                                    age5=result[4][4],
                                    grade5=result[4][1],
                                    cate5=result[4][2],
@@ -244,7 +246,7 @@ def index():
                                    constellation5=result[4][7],
                                    hobby5=result[4][8],
                                    intro5=result[4][9],
-                                    photo_data5=result[1][10],
+                                    photo_data5=photos[4],
 
                                    )
         else:
